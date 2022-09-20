@@ -36,8 +36,9 @@ const sections = document.querySelectorAll("section");
 */
 
 function ClickedItem(event) {
-    // a function that gets the clicked target (called only when clicking on 
-    //   the navbar items) and then clips its href to get the id used to navigate to sections.
+    // a function that gets the clicked target 
+    // (called only when clicking on the navbar items) 
+    // and then clips its href to get the id used to navigate to sections.
 
     let clickedLink = event.target;
     let hrefContents = clickedLink.getAttribute("href");
@@ -45,8 +46,9 @@ function ClickedItem(event) {
 }
 
 function ScrollFunction(event){
-    //a function that calls clickeditem function (to get the id of the desired section) 
-    //  and SmoothScroll (to scroll to that section)
+    // a function that calls clickeditem function 
+    // (to get the id of the desired section) 
+    // and SmoothScroll (to scroll to that section)
 
     ClickedItem(event);
     SmoothScroll(event);
@@ -64,8 +66,10 @@ function SectionBounds(){
     // a function that gets the boundries of each section and store them
     
     for (let i = 0; i < sections.length; i++) {
-        sectionTop[i] = sections.item(i).getBoundingClientRect().top + window.pageYOffset;
-        sectionBottom[i] = sections.item(i).getBoundingClientRect().bottom + window.pageYOffset;
+        sectionTop[i] = sections.item(i).getBoundingClientRect().top 
+                        + window.pageYOffset;
+        sectionBottom[i] = sections.item(i).getBoundingClientRect().bottom 
+                            + window.pageYOffset;
     }
 }
 
@@ -106,7 +110,8 @@ function AddActiveClass(){
         ClearClasses();
         let scrollingPosition = window.scrollY;
         for (let i = 0; i < sections.length; i++) {
-            if( sectionTop[i] < scrollingPosition && sectionBottom[i] >= scrollingPosition){
+            if( sectionTop[i] < scrollingPosition 
+                && sectionBottom[i] >= scrollingPosition) {
                 sections.item(i).classList.add("section--active");
             }
         }
@@ -122,7 +127,7 @@ function SmoothScroll(event){
     for (const section of sections) {
        const sectionId = section.getAttribute("id");
        if (callingId === sectionId){
-        var element = document.getElementById(callingId);
+        let element = document.getElementById(callingId);
         element.scrollIntoView({
             behavior: "smooth"
         });
