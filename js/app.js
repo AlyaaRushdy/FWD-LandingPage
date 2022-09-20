@@ -26,7 +26,7 @@ const startingTime = performance.now();
 */
 
 let listItem = [], menuLinks, callingId, sectionTop = [], sectionBottom = [];
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll('section');
 
 
 /**
@@ -41,7 +41,7 @@ function ClickedItem(event) {
     // and then clips its href to get the id used to navigate to sections.
 
     let clickedLink = event.target;
-    let hrefContents = clickedLink.getAttribute("href");
+    let hrefContents = clickedLink.getAttribute('href');
     callingId = hrefContents.slice(1);
 }
 
@@ -58,7 +58,7 @@ function ClearClasses(){
     // a function to clear all occurences of the class section--active
 
     for (const section of sections) {
-        section.classList.remove("section--active");
+        section.classList.remove('section--active');
     }
 }
 
@@ -83,16 +83,16 @@ function SectionBounds(){
 function CreateNavbar() {
     
     //calling the navbar and storing it in a variable
-    const navList = document.getElementById("navbar__list");
+    const navList = document.getElementById('navbar__list');
 
     for (let i = 0; i < sections.length; i++){
         // creating the list item and storing it
-        listItem[i] = document.createElement("li");
+        listItem[i] = document.createElement('li');
 
         //creating the anchor tag and its components
-        let listAnchor = document.createElement("a");
-        listAnchor.classList = "menu__link";
-        listAnchor.setAttribute("href", `#section${i+1}`);
+        let listAnchor = document.createElement('a');
+        listAnchor.classList = 'menu__link';
+        listAnchor.setAttribute('href', `#section${i+1}`);
         listAnchor.innerText = `section ${i+1} `;
 
         //appending the anchor to the li 
@@ -111,8 +111,8 @@ function AddActiveClass(){
         let scrollingPosition = window.scrollY;
         for (let i = 0; i < sections.length; i++) {
             if( sectionTop[i] < scrollingPosition 
-                && sectionBottom[i] >= scrollingPosition) {
-                sections.item(i).classList.add("section--active");
+                    && sectionBottom[i] >= scrollingPosition) {
+                sections.item(i).classList.add('section--active');
             }
         }
     }
@@ -125,11 +125,11 @@ function SmoothScroll(event){
 
     event.preventDefault();
     for (const section of sections) {
-       const sectionId = section.getAttribute("id");
+       const sectionId = section.getAttribute('id');
        if (callingId === sectionId){
         let element = document.getElementById(callingId);
         element.scrollIntoView({
-            behavior: "smooth"
+            behavior: 'smooth'
         });
        }
     }
